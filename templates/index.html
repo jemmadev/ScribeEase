@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ScribeEase</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>ScribeEase</h1>
+        <p class="tagline">Turn handwritten or printed pages into an editable Word document.</p>
+
+        {% if error %}<div class="error">{{ error }}</div>{% endif %}
+
+        <form id="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="documents" accept="image/*,.heic,.heif,.pdf" multiple required>
+            <p class="hint">JPG, PNG, HEIC, WebP or PDF &middot; up to {{ max_pages }} pages and {{ max_mb }} MB per upload.
+               Select several files to combine them into one document, in the order chosen.</p>
+            <button id="submit-btn" type="submit">Extract text</button>
+            <div id="status" role="status">Reading your pages&hellip; this can take 10&ndash;30 seconds per page. Please don&rsquo;t close this tab.</div>
+        </form>
+
+
+    </div>
+    <script>
+        document.getElementById('upload-form').addEventListener('submit', function () {
+            var b = document.getElementById('submit-btn');
+            b.disabled = true; b.textContent = 'Working…';
+            document.getElementById('status').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ScribeEase - Access</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>ScribeEase</h1>
+        <p class="tagline">Enter the access code to continue.</p>
+        {% if error %}<div class="error">{{ error }}</div>{% endif %}
+        <form method="POST">
+            <input type="password" name="code" autocomplete="current-password" autofocus required>
+            <button type="submit">Continue</button>
+        </form>
+    </div>
+</body>
+</html>

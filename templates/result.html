@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ScribeEase - Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Extracted text</h1>
+        <p class="tagline">Check it against the original and fix any mistakes before downloading.</p>
+
+        {% if notice %}<div class="error">{{ notice }}</div>{% endif %}
+
+        <form action="/download" method="POST">
+            <textarea name="edited_text" spellcheck="false">{{ text }}</textarea>
+
+            <div class="actions">
+                <button type="submit">Download as .docx</button>
+                <a href="/">Upload another</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
