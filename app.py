@@ -35,7 +35,7 @@ MODELS = [m.strip() for m in os.environ.get('GEMINI_MODELS', DEFAULT_MODELS).spl
 QUOTA_COOLDOWN = 3600      # seconds to skip a model after it reports its daily limit reached
 RETRY_DELAYS = (4, 12)                                       # seconds to wait before retries on a busy model
 MAX_PAGES = int(os.environ.get('MAX_PAGES', '10'))          # total pages per request
-MAX_UPLOAD_MB = int(os.environ.get('MAX_UPLOAD_MB', '25'))
+MAX_UPLOAD_MB = int(os.environ.get('MAX_UPLOAD_MB', '40'))
 ACCESS_CODE = os.environ.get('ACCESS_CODE', '')             # optional: gate the whole site
 ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png', 'webp', 'heic', 'heif',
                       'bmp', 'gif', 'tif', 'tiff', 'pdf'}

@@ -1,20 +1,41 @@
 :root { --ink:#1f2937; --muted:#6b7280; --line:#d1d5db; --brand:#2f5d50; --brand-dark:#244a40; --bg:#f6f7f5; --err:#b42318; }
 * { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
 body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; color: var(--ink);
        background: var(--bg); margin: 0; padding: 32px 16px; line-height: 1.5; }
 .container { max-width: 720px; margin: 0 auto; background: #fff; padding: 32px; border: 1px solid var(--line); border-radius: 12px; }
 h1 { margin: 0 0 4px; font-size: 1.8rem; color: var(--brand); }
 .tagline { margin: 0 0 24px; color: var(--muted); }
 .error { background: #fef3f2; border: 1px solid #fecdca; color: var(--err); padding: 10px 14px; border-radius: 8px; margin-bottom: 16px; }
-input[type=file], input[type=password] { display: block; width: 100%; padding: 12px; border: 2px dashed var(--line); border-radius: 8px; background: #fafafa; font: inherit; }
+input[type=file], input[type=password] { display: block; width: 100%; padding: 12px; border: 2px dashed var(--line); border-radius: 8px; background: #fafafa; font: inherit; font-size: 16px; }
 input[type=password] { border-style: solid; }
-button { margin-top: 16px; padding: 12px 22px; font: inherit; font-weight: 600; color: #fff; background: var(--brand);
-         border: 0; border-radius: 8px; cursor: pointer; }
-button:hover { background: var(--brand-dark); }
-button:disabled { background: var(--muted); cursor: wait; }
-textarea { width: 100%; min-height: 55vh; padding: 14px; font: 0.95rem/1.5 ui-monospace, Consolas, monospace; border: 1px solid var(--line); border-radius: 8px; resize: vertical; }
+input[type=file] { cursor: pointer; padding: 14px; }
+input[type=file]::file-selector-button { margin-right: 14px; padding: 14px 22px; font: inherit; font-weight: 600; color: #fff;
+                                         background: var(--brand); border: 0; border-radius: 8px; cursor: pointer; }
+input[type=file]:hover::file-selector-button { background: var(--brand-dark); }
+.btn, button { display: inline-block; margin-top: 16px; padding: 12px 22px; font: inherit; font-weight: 600; line-height: 1.2;
+               text-align: center; text-decoration: none; color: #fff; background: var(--brand);
+               border: 2px solid var(--brand); border-radius: 8px; cursor: pointer; }
+.btn:hover, button:hover { background: var(--brand-dark); border-color: var(--brand-dark); }
+.btn-secondary { color: var(--brand); background: #fff; }
+.btn-secondary:hover { color: #fff; }
+button:disabled { background: var(--muted); border-color: var(--muted); cursor: wait; }
+textarea { width: 100%; min-height: 55vh; padding: 14px; font: 16px/1.5 ui-monospace, Consolas, monospace; border: 1px solid var(--line); border-radius: 8px; resize: vertical; }
 .hint, .note { color: var(--muted); font-size: 0.9rem; }
 .note { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 14px; }
 #status { display: none; margin-top: 14px; color: var(--brand); font-weight: 600; }
 a { color: var(--brand); }
-.actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+.actions .btn, .actions button { margin-top: 0; }
+
+/* Phones */
+@media (max-width: 600px) {
+  body { padding: 10px; }
+  .container { padding: 20px 16px; border-radius: 10px; }
+  h1 { font-size: 1.5rem; }
+  .btn, button { display: block; width: 100%; min-height: 48px; }
+  .actions { flex-direction: column; gap: 10px; }
+  textarea { min-height: 50vh; }
+  input[type=file] { padding: 12px; }
+  input[type=file]::file-selector-button { padding: 16px 18px; margin-right: 12px; }
+}
